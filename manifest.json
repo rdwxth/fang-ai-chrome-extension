@@ -22,13 +22,12 @@
       }
     ],
     "commands": {
-      "open_popup": {
+    "_execute_browser_action": {
         "suggested_key": {
-          "default": "Ctrl+Shift+K",
-          "mac": "MacCtrl+Shift+K"
-        },
-        "description": "Open Kai Assist Popup"
-      }
+            "default": "|",
+            "mac": "|",
+            "description": "Generate Kai Assist Response"
+        }
     }
   }
-  
+}
