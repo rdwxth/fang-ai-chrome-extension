@@ -4,9 +4,9 @@
   "description": "A Chrome extension powered by GPT-3.5",
   "version": "0.0.1",
   "icons": {
-    "16": "logo/logo.svg",
-    "48": "logo/logo.svg",
-    "128": "logo/logo.svg"
+    "16": "logo/logo.png",
+    "48": "logo/logo.png",
+    "128": "logo/logo.png"
   },
   "permissions": [
     "activeTab",
@@ -32,10 +32,8 @@
     "_execute_browser_action": {
       "suggested_key": {
         "default": "Ctrl+Shift+K",
-        "mac": "MacCtrl+Shift+K",
         "description": "Generate Kai Assist Response"
       }
     }
   }
 }
-
