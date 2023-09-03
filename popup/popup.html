@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="popup.css">
-    <title>Chrome Addon v3: popup</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kai Assist</title>
+  <!-- Add Tailwind CSS CDN link -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <script src="popup.js"></script>
 </head>
-<body>
-    This is the <span class="special-text">HTML</span> body of the addon.
+<body class="bg-gray-100 p-4">
+  <div class="max-w-md mx-auto bg-white p-6 rounded shadow-md flex items-center">
+    <img src="logo/logo.svg" alt="Kai Assist Logo" class="h-8 w-8 mr-2"> <!-- Add the logo here -->
+    <h2 class="text-2xl font-semibold mb-4">Kai Assist</h2>
+    <label for="rayIdInput" class="block text-gray-700 mb-2">Enter your ray_id:</label>
+    <input type="text" id="rayIdInput" class="w-full border rounded py-2 px-3 text-gray-700 mb-4 focus:outline-none focus:border-blue-500">
+    <button id="saveRayIdButton" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700">Save</button>
+  </div>
 </body>
 </html>
