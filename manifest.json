@@ -1,33 +1,33 @@
 {
-    "manifest_version": 3,
-    "name": "Kai Assist",
-    "description": "A Chrome extension powered by GPT-3.5",
-    "version": "0.0.1",
-    "icons": {
-      "16": "logo/logo.svg",
-      "48": "logo/logo.svg",
-      "128": "logo/logo.svg"
-    },
-    "permissions": ["activeTab", "clipboardWrite", "storage", "*://*/*", "contextMenus"],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "content_scripts": [
-      {
-        "js": ["foreground.js"],
-        "matches": ["<all_urls>"]
-      }
-    ],
-    "commands": {
+  "manifest_version": 3,
+  "name": "Kai Assist",
+  "description": "A Chrome extension powered by GPT-3.5",
+  "version": "0.0.1",
+  "icons": {
+    "16": "logo/logo.svg",
+    "48": "logo/logo.svg",
+    "128": "logo/logo.svg"
+  },
+  "permissions": ["activeTab", "clipboardWrite", "storage", "*://*/*", "contextMenus"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["foreground.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "commands": {
     "_execute_browser_action": {
-        "suggested_key": {
-            "default": "|",
-            "mac": "|",
-            "description": "Generate Kai Assist Response"
-        }
+      "suggested_key": {
+        "default": "|",
+        "mac": "|",
+        "description": "Generate Kai Assist Response"
+      }
     }
   }
 }
