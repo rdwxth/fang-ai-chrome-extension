@@ -12,19 +12,8 @@
   "background": {
     "service_worker": "background.js"
   },
-  "options_page": "options.html",
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "logo.svg",
-      "48": "logo.svg",
-      "128": "logo.svg"
-    }
-  },
-  "icons": {
-    "16": "logo.svg",
-    "48": "logo.svg",
-    "128": "logo.svg"
+    "default_popup": "popup.html"
   },
   "commands": {
     "_execute_browser_action": {
@@ -48,4 +37,3 @@
     }
   ]
 }
-
