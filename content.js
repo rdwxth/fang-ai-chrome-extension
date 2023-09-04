@@ -3,8 +3,11 @@
 // Listen for messages from the background script or other parts of your extension
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.text) {
-      // Send the selected text to your API with the user's ray_id and handle the response here.
+      console.log('Received message from background script:', message);
+  
+      // Send the selected text to your API and handle the response here.
       const selectedText = message.text;
+      console.log('Selected text:', selectedText);
   
       // Retrieve user settings (Ray ID) from Chrome storage
       chrome.storage.sync.get(['rayId'], function (data) {
@@ -12,15 +15,16 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   
         if (!rayId) {
           alert('Please set your Ray ID in the extension settings.');
+          console.log('Ray ID not set.');
           return;
         }
+        console.log('Ray ID:', rayId);
   
-        // Send the selected text to your API
+        // Send the selected text to your API without authorization headers
         fetch('https://prod-1-eu-germany.trykai.xyz/api/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${rayId}` // Use the user's ray_id as the API key
           },
           body: JSON.stringify({
             ray_id: rayId,
@@ -29,8 +33,11 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         })
         .then(response => response.json())
         .then(data => {
+          console.log('API response:', data);
+  
           const reply = JSON.parse(data.response).reply;
-          
+          console.log('API reply:', reply);
+  
           // Copy the reply to the clipboard
           const tempInput = document.createElement('input');
           tempInput.value = reply;
@@ -38,7 +45,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
           tempInput.select();
           document.execCommand('copy');
           document.body.removeChild(tempInput);
-          
+  
+          console.log('Response copied to clipboard:', reply);
+  
           // Notify the user that the response has been copied
           alert('Response copied to clipboard: ' + reply);
         })
@@ -49,4 +58,5 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
     // Handle other message types as needed
   });
+  
   
