@@ -1,16 +1,12 @@
-// background.js
-chrome.commands.onCommand.addListener(function (command) {
-    if (command === "_execute_browser_action") {
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.scripting.executeScript({
-          target: { tabId: tabs[0].id },
-          function: generateResponse,
-        });
-      });
-    }
+chrome.contextMenus.create({
+    title: 'Send to Kai Assist',
+    contexts: ['selection'],
+    id: 'sendToKaiAssist'
   });
   
-  function generateResponse() {
-    chrome.runtime.sendMessage({ action: "generateResponse" });
-  }
+  chrome.contextMenus.onClicked.addListener(function (info, tab) {
+    if (info.menuItemId === 'sendToKaiAssist') {
+      chrome.tabs.sendMessage(tab.id, { text: info.selectionText });
+    }
+  });
   

@@ -1,39 +1,51 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Kai Assist",
-  "description": "A Chrome extension powered by GPT-3.5",
-  "version": "0.0.1",
-  "icons": {
-    "16": "logo/logo.png",
-    "48": "logo/logo.png",
-    "128": "logo/logo.png"
-  },
+  "version": "1.0",
+  "description": "An extension that interacts with Kai's AI API.",
   "permissions": [
     "activeTab",
-    "clipboardWrite",
     "storage",
     "contextMenus",
-    "*://*/*"
+    "clipboardWrite"
   ],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
-  "browser_action": {
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [
-    {
-      "js": ["foreground.js"],
-      "matches": ["<all_urls>"]
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "logo.svg",
+      "48": "logo.svg",
+      "128": "logo.svg"
     }
-  ],
+  },
+  "icons": {
+    "16": "logo.svg",
+    "48": "logo.svg",
+    "128": "logo.svg"
+  },
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
         "default": "Ctrl+Shift+K",
-        "description": "Generate Kai Assist Response"
-      }
+        "mac": "Command+Shift+K"
+      },
+      "description": "Send selected text to Kai Assist"
     }
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["options.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
+
